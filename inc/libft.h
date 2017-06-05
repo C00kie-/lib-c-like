@@ -6,7 +6,7 @@
 /*   By: pbourmea <pbourmea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/28 20:17:02 by pbourmea          #+#    #+#             */
-/*   Updated: 2015/01/27 19:21:51 by pbourmea         ###   ########.fr       */
+/*   Updated: 2017/06/05 14:01:07 by pbourmea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
-
 
 typedef struct		s_list
 {
@@ -34,7 +33,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t				ft_strlen(const char *str);
 char				*ft_strdup(const char *s1);
-char 				*ft_strndup(const char *src, size_t size);
+char				*ft_strndup(const char *src, size_t size);
 char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strncpy(char *dest, const char *src, size_t n);
 char				*ft_strcat(char *s1, const char *s2dd);
@@ -79,6 +78,7 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *str, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+size_t				ft_size_bin(unsigned int value);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));

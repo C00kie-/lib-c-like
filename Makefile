@@ -86,6 +86,7 @@ SRC_F += ft_lstadd_end.c
 SRC_F += ft_lstadd.c
 SRC_F += get_next_line.c
 SRC_F += ft_strndup.c
+SRC_F += ft_size_bin.c
 
 INC_F += libft.h
 INC_F += get_next_line.h

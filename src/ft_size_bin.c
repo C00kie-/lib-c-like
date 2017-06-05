@@ -1,23 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_size_bin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbourmea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 13:54:02 by pbourmea          #+#    #+#             */
-/*   Updated: 2017/06/05 14:01:47 by pbourmea         ###   ########.fr       */
+/*   Created: 2017/06/05 13:52:33 by pbourmea          #+#    #+#             */
+/*   Updated: 2017/06/05 13:53:10 by pbourmea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strndup(const char *src, size_t size)
+double	ft_pow(double x, unsigned int y)
 {
-	char *str;
+	double	i;
+	double	val;
 
-	str = malloc(sizeof(size) + 1);
-	ft_strncpy(str, src, size);
-	str[size] = '\0';
-	return (str);
+	i = 0;
+	val = 1;
+	if (y == 0)
+		return (1);
+	while (i < y)
+	{
+		val *= x;
+		i++;
+	}
+	return (val);
+}
+
+size_t	ft_size_bin(unsigned int value)
+{
+	size_t	i;
+	size_t	total;
+
+	total = 0;
+	i = 0;
+	while ((total += ft_pow(2, i)) < (size_t)value)
+		i++;
+	return (i + 1);
 }

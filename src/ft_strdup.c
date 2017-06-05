@@ -6,13 +6,13 @@
 /*   By: pbourmea <pbourmea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 11:42:59 by pbourmea          #+#    #+#             */
-/*   Updated: 2015/01/27 19:12:48 by pbourmea         ###   ########.fr       */
+/*   Updated: 2017/06/05 13:53:44 by pbourmea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	int		i;
 	char	*dup;

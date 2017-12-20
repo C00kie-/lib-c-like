@@ -6,7 +6,7 @@
 /*   By: pbourmea <pbourmea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/28 19:51:06 by pbourmea          #+#    #+#             */
-/*   Updated: 2015/01/21 13:45:11 by pbourmea         ###   ########.fr       */
+/*   Updated: 2017/12/20 23:46:13 by pbourmea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	*ft_memalloc(size_t size)
 
 	if (size == 0)
 		return (NULL);
-	dest = malloc(sizeof(char *) * size);
+	if ((dest = malloc(sizeof(char *) * size)) == NULL)
+		return (NULL);
 	n = 0;
 	if (dest != NULL)
 	{

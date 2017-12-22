@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_strisdigit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbourmea <pbourmea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pbourmea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/28 19:51:06 by pbourmea          #+#    #+#             */
-/*   Updated: 2015/01/21 13:45:11 by pbourmea         ###   ########.fr       */
+/*   Created: 2017/12/22 20:14:24 by pbourmea          #+#    #+#             */
+/*   Updated: 2017/12/22 20:14:26 by pbourmea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+int	ft_strisdigit(char *line)
 {
-	void	*dest;
-	size_t	n;
+	int i;
 
-	if (size == 0)
-		return (NULL);
-	if ((dest = malloc(sizeof(char *) * size)) == NULL)
-		return (NULL);
-	n = 0;
-	if (dest != NULL)
+	i = 0;
+	while (line && line[i] != '\0')
 	{
-		while (n < size)
-		{
-			ft_memset(dest, 0, size);
-			n++;
-		}
+		if (!ft_isdigit(line[i]))
+			return (0);
+		else
+			i++;
 	}
-	return (dest);
+	return (1);
 }

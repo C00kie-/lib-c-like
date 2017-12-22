@@ -49,6 +49,7 @@ SRC_F += ft_putnbr.c
 SRC_F += ft_putnbr_fd.c
 SRC_F += ft_putstr.c
 SRC_F += ft_putstr_fd.c
+SRC_F += ft_strisdigit.c
 SRC_F += ft_strcat.c
 SRC_F += ft_strchr.c
 SRC_F += ft_strclr.c

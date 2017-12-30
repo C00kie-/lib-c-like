@@ -10,117 +10,93 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang
-
-CFLAGS = -Wall -Werror -Wextra -g
-LDFLAGS = -I $(DIR_INC)
-
 NAME = libft.a
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
-DIR_SRC = src
-DIR_INC = inc
-DIR_OBJ = obj
+SRC = 	ft_atoi.c\
+		ft_bzero.c\
+		ft_isalnum.c\
+		ft_isalpha.c\
+		ft_isascii.c\
+		ft_isdigit.c\
+		ft_isprint.c\
+		ft_itoa.c\
+		ft_lstadd.c\
+		ft_lstdel.c\
+		ft_lstdelone.c\
+		ft_lstiter.c\
+		ft_lstmap.c\
+		ft_lstnew.c\
+		ft_memalloc.c\
+		ft_memccpy.c\
+		ft_memchr.c\
+		ft_memcmp.c\
+		ft_memcpy.c\
+		ft_memdel.c\
+		ft_memmove.c\
+		ft_memset.c\
+		ft_putchar.c\
+		ft_putchar_fd.c\
+		ft_putendl.c\
+		ft_putendl_fd.c\
+		ft_putnbr.c\
+		ft_putnbr_fd.c\
+		ft_putstr.c\
+		ft_putstr_fd.c\
+		ft_strcat.c\
+		ft_strchr.c\
+		ft_strclr.c\
+		ft_strcmp.c\
+		ft_strcpy.c\
+		ft_strdel.c\
+		ft_strdup.c\
+		ft_strequ.c\
+		ft_striter.c\
+		ft_striteri.c\
+		ft_strjoin.c\
+		ft_strlcat.c\
+		ft_strlen.c\
+		ft_strmap.c\
+		ft_strmapi.c\
+		ft_strncat.c\
+		ft_strncmp.c\
+		ft_strncpy.c\
+		ft_strnequ.c\
+		ft_strnew.c\
+		ft_strnstr.c\
+		ft_strrchr.c\
+		ft_strsplit.c\
+		ft_strstr.c\
+		ft_strsub.c\
+		ft_strtrim.c\
+		ft_tolower.c\
+		ft_toupper.c\
+		get_next_line.c
 
-SRC = $(addprefix $(DIR_SRC)/,$(SRC_F))
-INC = $(addprefix $(DIR_INC)/,$(INC_F))
-OBJ = $(subst .c,.o,$(subst $(DIR_SRC),$(DIR_OBJ),$(SRC)))
 
-SRC_F += ft_atoi.c
-SRC_F += ft_bzero.c
-SRC_F += ft_isalnum.c
-SRC_F += ft_isalpha.c
-SRC_F += ft_isascii.c
-SRC_F += ft_isdigit.c
-SRC_F += ft_isprint.c
-SRC_F += ft_itoa.c
-SRC_F += ft_memalloc.c
-SRC_F += ft_memccpy.c
-SRC_F += ft_memchr.c
-SRC_F += ft_memcmp.c
-SRC_F += ft_memcpy.c
-SRC_F += ft_memdel.c
-SRC_F += ft_memmove.c
-SRC_F += ft_memset.c
-SRC_F += ft_putchar.c
-SRC_F += ft_putchar_fd.c
-SRC_F += ft_putendl.c
-SRC_F += ft_putendl_fd.c
-SRC_F += ft_putnbr.c
-SRC_F += ft_putnbr_fd.c
-SRC_F += ft_putstr.c
-SRC_F += ft_putstr_fd.c
-SRC_F += ft_strisdigit.c
-SRC_F += ft_strcat.c
-SRC_F += ft_strchr.c
-SRC_F += ft_strclr.c
-SRC_F += ft_strcmp.c
-SRC_F += ft_strcpy.c
-SRC_F += ft_strdel.c
-SRC_F += ft_strdup.c
-SRC_F += ft_strequ.c
-SRC_F += ft_striter.c
-SRC_F += ft_striteri.c
-SRC_F += ft_strjoin.c
-SRC_F += ft_strlcat.c
-SRC_F += ft_strlen.c
-SRC_F += ft_strmap.c
-SRC_F += ft_strmapi.c
-SRC_F += ft_strncat.c
-SRC_F += ft_strncmp.c
-SRC_F += ft_strncpy.c
-SRC_F += ft_strnequ.c
-SRC_F += ft_strnew.c
-SRC_F += ft_strnstr.c
-SRC_F += ft_strrchr.c
-SRC_F += ft_strsplit.c
-SRC_F += ft_strstr.c
-SRC_F += ft_strsub.c
-SRC_F += ft_tolower.c
-SRC_F += ft_toupper.c
-SRC_F += ft_strtrim.c
-SRC_F += ft_lstnew.c
-SRC_F += ft_lstmap.c
-SRC_F += ft_lstiter.c
-SRC_F += ft_lstdelone.c
-SRC_F += ft_lstdel.c
-SRC_F += ft_lstadd_end.c
-SRC_F += ft_lstadd.c
-SRC_F += get_next_line.c
-SRC_F += ft_strndup.c
-SRC_F += ft_size_bin.c
+OBJ = ${SRC:c=o}
 
-INC_F += libft.h
-INC_F += get_next_line.h
+all: $(NAME)
 
-all: 		$(NAME)
+%.o : %.c
+	@printf "Compiling...                                                      \
+	          \rCompiling... $(CC) $(CFLAGS) -c -o $@ $^\r"
+	@$(CC) $(CFLAGS)	-c -o $@ $^
 
-$(NAME): 	$(OBJ)
-			@ar rcs $@ $(OBJ)
-			@echo "compile done !"
-
-$(DIR_OBJ)/%.o: $(DIR_SRC)/%.c $(INC) $(DIR_OBJ)
-			@$(CC) -o $@ -c $< $(CFLAGS) $(LDFLAGS)
+$(NAME): $(OBJ)
+	@printf "Compiling....\033[32m✔\033[0m                                                     \
+	    \nLinking......\033[32m✔\033[0m\n"
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@echo "Done !"
 
 clean:
-			@rm -f $(OBJ)
-			@echo "clean done !"
+	@rm -f $(OBJ)
+	@echo "Object files removed."
 
-fclean:		clean
-			@rm -f $(NAME)
-			@echo "fclean done !"
+fclean: clean
+	@rm -f $(NAME)
+	@echo "$(NAME) removed."
 
-re: 		fclean all
-
-debug :		fclean $(SRC)
-			@$(CC) $(CFLAG) -g -c $(SRC)
-			@ar rc $(NAME) $(OBJ)
-			@ranlib $(NAME)
-			@echo "compile DEBUG done !"
-
-.PHONY: 	all clean fclean re
-
-$(DIR_OBJ):
-	mkdir $(DIR_OBJ)
-
-test:
-	echo $(OBJ)
+re: fclean all

@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbourmea <pbourmea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/28 20:03:36 by pbourmea          #+#    #+#             */
-/*   Updated: 2015/01/22 17:21:31 by pbourmea         ###   ########.fr       */
+/*   Created: 2014/11/26 18:02:09 by pbourmea          #+#    #+#             */
+/*   Updated: 2015/01/21 15:52:14 by pbourmea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_strstr(const char *s1, const char *s2)
 {
-	char	*dest;
-	size_t	n;
+	int i;
+	int j;
 
-	dest = (char *)malloc(sizeof(char) * size + 1);
-	n = 0;
-	while (dest + n != NULL && n <= size)
+	i = 0;
+	j = 0;
+	if (s2[0] == '\0' || s2 == NULL)
+		return ((char*)s1);
+	while (s1[i])
 	{
-		dest[n] = '\0';
-		n++;
+		if (s1[i] == s2[j])
+		{
+			j++;
+			if (s2[j] == '\0')
+				return ((char*)s1 + i - j + 1);
+		}
+		else
+		{
+			i = i - j;
+			j = 0;
+		}
+		i++;
 	}
-	return (dest);
+	return (NULL);
 }

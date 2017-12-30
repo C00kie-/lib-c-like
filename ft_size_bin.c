@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_size_bin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbourmea <pbourmea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pbourmea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/17 13:34:59 by pbourmea          #+#    #+#             */
-/*   Updated: 2015/01/22 18:23:59 by pbourmea         ###   ########.fr       */
+/*   Created: 2017/06/05 13:52:33 by pbourmea          #+#    #+#             */
+/*   Updated: 2017/06/05 13:53:10 by pbourmea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+static double	ft_pow(double x, unsigned int y)
 {
-	size_t i;
+	double	i;
+	double	val;
 
-	if (dest == NULL || src == NULL)
-		return (NULL);
 	i = 0;
-	while (i < n)
+	val = 1;
+	if (y == 0)
+		return (1);
+	while (i < y)
 	{
-		dest[i] = '\0';
+		val *= x;
 		i++;
 	}
+	return (val);
+}
+
+size_t			ft_size_bin(unsigned int value)
+{
+	size_t	i;
+	size_t	total;
+
+	total = 0;
 	i = 0;
-	while (src[i] != '\0' && i < n)
-	{
-		dest[i] = src[i];
+	while ((total += ft_pow(2, i)) < (size_t)value)
 		i++;
-	}
-	return (dest);
+	return (i + 1);
 }

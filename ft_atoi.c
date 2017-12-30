@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbourmea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/20 17:38:57 by pbourmea          #+#    #+#             */
-/*   Updated: 2015/01/27 19:11:55 by pbourmea         ###   ########.fr       */
+/*   Created: 2015/01/20 17:08:59 by pbourmea          #+#    #+#             */
+/*   Updated: 2015/06/23 16:42:04 by pbourmea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t len)
+int		ft_atoi(const char *s)
 {
-	unsigned char *str;
+	int	res;
+	int	i;
+	int	sign;
 
-	if (!dest || !src)
-		return (NULL);
-	else
-	{
-		str = malloc(sizeof(*str) * len);
-		if (!str)
-			return (NULL);
-		ft_memcpy(str, src, len);
-		ft_memcpy(dest, str, len);
-		free(str);
-		return (dest);
-	}
+	i = 0;
+	sign = 1;
+	res = 0;
+	while (ft_strchr("\t\n\v\f\r ", *s))
+		s++;
+	if (s[i] == '+' || s[i] == '-')
+		sign = (s[i++] == '-') ? -1 : 1;
+	while (s[i] >= '0' && s[i] <= '9')
+		res = res * 10 + ((s[i++] - '0') * sign);
+	return (res);
 }

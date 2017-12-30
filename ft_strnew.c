@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbourmea <pbourmea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/26 16:03:42 by pbourmea          #+#    #+#             */
-/*   Updated: 2015/01/20 17:35:18 by pbourmea         ###   ########.fr       */
+/*   Created: 2014/11/28 20:03:36 by pbourmea          #+#    #+#             */
+/*   Updated: 2015/01/22 17:21:31 by pbourmea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strnew(size_t size)
 {
-	size_t				i;
-	const unsigned char *chaine;
+	char	*dest;
+	size_t	n;
 
-	if (s != NULL)
+	if ((dest = (char *)malloc(sizeof(char) * size + 1)) == NULL)
+		return (NULL);
+	n = 0;
+	while (dest + n != NULL && n <= size)
 	{
-		chaine = (unsigned char*)s;
-		i = 0;
-		while (i < n)
-		{
-			if (chaine[i] == (unsigned char)c)
-				return ((unsigned char *)chaine + i);
-			else
-				i++;
-		}
+		dest[n] = '\0';
+		n++;
 	}
-	return (NULL);
+	return (dest);
 }

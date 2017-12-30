@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbourmea <pbourmea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/26 18:02:09 by pbourmea          #+#    #+#             */
-/*   Updated: 2015/01/21 15:52:14 by pbourmea         ###   ########.fr       */
+/*   Created: 2014/11/26 16:03:42 by pbourmea          #+#    #+#             */
+/*   Updated: 2015/01/20 17:35:18 by pbourmea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *s1, const char *s2)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int i;
-	int j;
+	size_t				i;
+	const unsigned char *chaine;
 
+	chaine = (unsigned char*)s;
 	i = 0;
-	j = 0;
-	if (s1 == NULL)
-		return (NULL);
-	if (s2[0] == '\0' || s2 == NULL)
-		return ((char*)s1);
-	while (s1[i])
+	while (i < n)
 	{
-		if (s1[i] == s2[j])
-		{
-			j++;
-			if (s2[j] == '\0')
-				return ((char*)s1 + i - j + 1);
-		}
+		if (chaine[i] == (unsigned char)c)
+			return ((unsigned char *)chaine + i);
 		else
-		{
-			i = i - j;
-			j = 0;
-		}
-		i++;
+			i++;
 	}
 	return (NULL);
 }

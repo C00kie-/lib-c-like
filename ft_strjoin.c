@@ -25,7 +25,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		len = ft_strlen(s1);
 	if (s2)
 		len = len + ft_strlen(s2);
-	dest = ft_strnew(len + 1);
+
+	if ((dest = malloc(sizeof(char *)*len +1)) == NULL)
+		return (NULL);
+	// dest = ft_strnew(len + 1);
 	if (s1)
 		dest = ft_strcpy(dest, s1);
 	if (s2)

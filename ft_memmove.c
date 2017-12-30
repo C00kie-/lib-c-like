@@ -14,18 +14,31 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	unsigned char *str;
+	// unsigned char *str;
+    //
+	// str = malloc(sizeof(*str) * len);
+	// if (!str)
+	// 	return (NULL);
+// 	ft_memcpy(str, src, len);
+// 	ft_memcpy(dest, str, len);
+// 	// free(str);
+// 	return (dest);
+// }
+//
+unsigned char	*psrc;
+	unsigned char	*pdest;
+	size_t			i;
 
-	if (!dest || !src)
-		return (NULL);
-	else
+	psrc = (unsigned char *)src;
+	pdest = (unsigned char *)dest;
+	i = -1;
+	if (dest > src && dest < sizeof(char) * len + src)
 	{
-		str = malloc(sizeof(*str) * len);
-		if (!str)
-			return (NULL);
-		ft_memcpy(str, src, len);
-		ft_memcpy(dest, str, len);
-		free(str);
-		return (dest);
+		while (len--)
+			pdest[len] = psrc[len];
 	}
+	else
+		while (++i < len)
+			pdest[i] = psrc[i];
+	return (dest);
 }

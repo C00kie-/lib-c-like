@@ -20,12 +20,12 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	if (s != NULL && f != NULL)
 	{
-		len = ft_strlen((char*)s);
-		dest = malloc(sizeof(dest) * (len + 1));
+		len = ft_strlen(s);
+		dest = malloc(sizeof(char) * len + 1);
 		if (!dest)
 			return (NULL);
 		i = 0;
-		while ((char)s[i] != '\0')
+		while (s[i])
 		{
 			dest[i] = (*f)(i, (char)s[i]);
 			i++;
@@ -35,3 +35,16 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	}
 	return (NULL);
 }
+
+// unsigned int		i;
+// char				*res;
+//
+// if (!s || !f)
+// 	return (NULL);
+// res = malloc(sizeof(char) * (ft_strlen(s) + 1));
+// if (!res)
+// 	return (NULL);
+// i = -1;
+// while (s[++i])
+// 	res[i] = f(i, s[i]);
+// res[i] = '\0';

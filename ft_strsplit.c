@@ -38,7 +38,7 @@ static size_t	ft_lensplit(const char *s, char c, size_t i)
 	return (len);
 }
 
-char	**ft_strsplit(const char *s, char c)
+char			**ft_strsplit(const char *s, char c)
 {
 	size_t	i;
 	size_t	j;

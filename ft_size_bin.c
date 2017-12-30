@@ -29,7 +29,7 @@ static double	ft_pow(double x, unsigned int y)
 	return (val);
 }
 
-size_t	ft_size_bin(unsigned int value)
+size_t			ft_size_bin(unsigned int value)
 {
 	size_t	i;
 	size_t	total;

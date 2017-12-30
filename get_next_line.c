@@ -22,7 +22,7 @@ static char		*join_buffer(char *buf, char *str)
 	return (new_str);
 }
 
-static int		Eof(int i, char *buf, char **line, char **ret)
+static int		case_end(int i, char *buf, char **line, char **ret)
 {
 	int				len;
 
@@ -58,7 +58,7 @@ int				get_next_line(int fd, char **line)
 		while ((buf[i] != '\n') && (buf[i] != '\0'))
 			i++;
 		if (i != (int)ft_strlen(buf) || len == 0)
-			return (Eof(i, buf, line, &ret));
+			return (case_end(i, buf, line, &ret));
 	}
 	return (len);
 }

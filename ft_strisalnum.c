@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strisascii.c                                    :+:      :+:    :+:   */
+/*   ft_strisalnum.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbourmea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,14 +12,16 @@
 
 #include "libft.h"
 
-int	ft_strisascii(char *line)
+int	ft_strisalnum(char *line)
 {
 	int i;
 
 	i = 0;
 	while (line && line[i] != '\0')
 	{
-		if (!ft_isascii(line[i]))
+		// if ((!ft_isalnum(line[i])) || line[i] != '/' || line[i] != '_' || line[i] != '-')
+		// 	return (0);
+		if (!(ft_isascii(line[i])))
 			return (0);
 		else
 			i++;

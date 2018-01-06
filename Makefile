@@ -57,6 +57,7 @@ SRC_F += ft_strcpy.c
 SRC_F += ft_strdel.c
 SRC_F += ft_strdup.c
 SRC_F += ft_strequ.c
+SRC_F += ft_strisalnum.c
 SRC_F += ft_striter.c
 SRC_F += ft_striteri.c
 SRC_F += ft_strjoin.c

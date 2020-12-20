@@ -101,7 +101,7 @@ $(NAME): 	$(OBJ)
 			@echo "compile done !"
 
 $(DIR_OBJ)/%.o: $(DIR_SRC)/%.c $(INC) $(DIR_OBJ)
-			@$(CC) -o $@ -c $< $(CFLAGS) $(LDFLAGS)
+			@$(CC) -I "./inc"-o $@ -c $< $(CFLAGS) $(LDFLAGS)
 
 clean:
 			@rm -f $(OBJ)
@@ -114,7 +114,7 @@ fclean:		clean
 re: 		fclean all
 
 debug :		fclean $(SRC)
-			@$(CC) $(CFLAG) -g -c $(SRC)
+			@$(CC) $(CFLAG) -g -c $(SRC) -I "./inc"
 			@ar rc $(NAME) $(OBJ)
 			@ranlib $(NAME)
 			@echo "compile DEBUG done !"
